@@ -64,9 +64,103 @@
                 <label for="">Import Jobsheet </label>
                 <input type="file" />
               </div>
-              <img src="/assets/images/uploadLogo.svg" alt="uploadLogo" />
+              <div class="uploadLogo">
+                <img src="/assets/images/uploadLogo.svg" alt="uploadLogo" />
+              </div>
             </div>
             <a href="" class="button-green">Add</a>
+          </div>
+
+          <h2 class="title jobsheetListTitle">JOBSHEET LIST</h2>
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Ref No.</th>
+                <th>Sheet Name</th>
+                <th>Status</th>
+                <th>Publish</th>
+                <th>Published Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>J-D21-023-1</td>
+                <td>Testing</td>
+                <td><span class="progress-pill">In-Progress</span></td>
+                <td><span class="publish-pill">Publish</span></td>
+                <td></td>
+                <td><button class="action-button">Action</button></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 class="title ptcTitle">PTC</h2>
+          <div class="buswayToggle">
+            <p>Busway</p>
+            <label class="switch">
+              <input type="checkbox" />
+              <span class="slider"></span>
+            </label>
+            <p>User Input</p>
+          </div>
+          <div class="ptcBusway">
+            <div class="ptcBuswaySection">
+              <label for="">Ref No. </label>
+              <input type="text" />
+            </div>
+            <div class="ptcBuswaySection">
+              <label for="">Busway No: </label>
+              <input type="text" />
+            </div>
+            <div class="ptcBuswaySection">
+              <label for="">Quantity (set) </label>
+              <input type="text" />
+            </div>
+            <div class="ptcBuswaySection masterPtcParent">
+              <div class="masterPtc">
+                <label for="">Master PTC </label>
+                <input type="text" />
+              </div>
+              <img src="/assets/images/search.svg" alt="search" />
+            </div>
+            <a href="" class="button-green ptcBtn">Add</a>
+          </div>
+
+          <h2 class="title jobsheetTitle">PTC List:</h2>
+          <h2 class="title ptcTitleTwo">PTC List:</h2>
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Ref No.</th>
+                <th>Busway No.</th>
+                <th>Qty (Set)</th>
+                <th>Master PTC No.</th>
+                <th>Status</th>
+                <th>Status</th>
+                <th>Published Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>PTC/23-21/1</td>
+                <td>V53, W51, U43, J58</td>
+                <td>4</td>
+                <td>A</td>
+                <td><span class="progress-pill">In-Progress</span></td>
+                <td><span class="publish-pill">Publish</span></td>
+                <td></td>
+                <td><button class="action-button">Action</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="submitBtn">
+            <button class="button-green editSubmit">Save</button>
           </div>
         </form>
       </div>
