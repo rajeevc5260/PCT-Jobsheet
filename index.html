@@ -10,38 +10,291 @@
     <link rel="stylesheet" href="/assets/global.css">
 </head>
 <body>
+
+    <style>
+        #search{
+            width: 345px;
+        }
+        .searchBox-container{
+            position: relative;
+        }
+        .search-icon{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            
+        }
+    </style>
+
+
     <div class="container">
-        <h1 class="title">PTC / JOBSHEET  List</h1>
+        <h2 class="title">PTC / JOBSHEET  List</h2>
+        <div style="display: flex; justify-content: space-between; margin-top: 48px;">
+            <div class="searchBox-container">
+                <input type="text" id="search" placeholder="Search">
+                <box-icon name='search' class="search-icon" ></box-icon>
+            </div>
+            <a href="/create.html" class="button-green">Create</a>
+        </div>
         <table class="custom-table">
             <thead>
-              <tr>
-                <th>#</th>
-                <th>Project No</th>
-                <th>Project Name</th>
-                <th>Order Form No.</th>
-                <th>Customer Name</th>
-                <th>Date</th>
-                <th>By</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>001</td>
-                <td>ABC01</td>
-                <td>ABC11</td>
-                <td>Davis</td>
-                <td>27/12/2023</td>
-                <td>Rajeev</td>
-                <td><button class="action-button">Action <box-icon name='cog'></box-icon></button> </td>
-              </tr>
-            </tbody>
-        </table>            
+                <tr>
+                  <th>#</th>
+                  <th>Project No</th>
+                  <th>Order No</th>
+                  <th>Customer Name</th>
+                  <th>Date</th>
+                  <th>By</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="data-table">
+                <!-- Data will be inserted here -->
+              </tbody>
+        </table>     
+        <div class="pagination-wrap">
+            <p class="pagination-text"></p>
+            <div class="pagination-container">
+            <button class="pagination-btn" data-action="prev"><box-icon name='chevron-left'></box-icon></button>
+            <ul class="pagination"></ul>
+            <button class="pagination-btn" data-action="next"><box-icon name='chevron-right' ></box-icon></button>
+        </div>  
+        </div>   
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            var table = $('.custom-table');
+            var tableBody = table.find('tbody');
+            var rowsPerPage = 10;
+            var currentPage = 1;
+    
+            // Fetch data
+            var jsonData = { 
+                  // Hard-coded JSON data
+            "draw": 1,
+            "start": 0,
+            "length": 10,
+            "recordsTotal": 10,
+            "recordsFiltered": 10,
+            "data": [
+                        {
+                    "id": 5,
+                    "projectNo": "18",
+                    "orderNo": "112",
+                    "customerName": "Customer 5",
+                    "date": "05/09/2023",
+                    "by": "susan",
+                    "deleteStatus": false
+                },
+                {
+                    "id": 6,
+                    "projectNo": "23",
+                    "orderNo": "567",
+                    "customerName": "Customer 6",
+                    "date": "17/10/2023",
+                    "by": "john",
+                    "deleteStatus": true
+                },
+                {
+                    "id": 7,
+                    "projectNo": "48",
+                    "orderNo": "789",
+                    "customerName": "Customer 7",
+                    "date": "01/11/2023",
+                    "by": "emily",
+                    "deleteStatus": false
+                },
+                {
+                    "id": 8,
+                    "projectNo": "36",
+                    "orderNo": "432",
+                    "customerName": "Customer 8",
+                    "date": "28/12/2023",
+                    "by": "peter",
+                    "deleteStatus": true
+                },
+                {
+                    "id": 9,
+                    "projectNo": "29",
+                    "orderNo": "654",
+                    "customerName": "Customer 9",
+                    "date": "19/01/2023",
+                    "by": "lisa",
+                    "deleteStatus": false
+                },
+                {
+                    "id": 10,
+                    "projectNo": "51",
+                    "orderNo": "987",
+                    "customerName": "Customer 10",
+                    "date": "05/02/2023",
+                    "by": "michael",
+                    "deleteStatus": true
+                },
+                {
+                    "id": 11,
+                    "projectNo": "14",
+                    "orderNo": "876",
+                    "customerName": "Customer 11",
+                    "date": "14/03/2023",
+                    "by": "natalie",
+                    "deleteStatus": false
+                },
+                {
+                    "id": 12,
+                    "projectNo": "42",
+                    "orderNo": "345",
+                    "customerName": "Customer 12",
+                    "date": "23/04/2023",
+                    "by": "david",
+                    "deleteStatus": true
+                },
+                {
+                    "id": 13,
+                    "projectNo": "19",
+                    "orderNo": "890",
+                    "customerName": "Customer 13",
+                    "date": "10/05/2023",
+                    "by": "olivia",
+                    "deleteStatus": false
+                },
+                {
+                    "id": 14,
+                    "projectNo": "33",
+                    "orderNo": "123",
+                    "customerName": "Customer 14",
+                    "date": "27/06/2023",
+                    "by": "james",
+                    "deleteStatus": true
+                },
+                {
+                    "id": 15,
+                    "projectNo": "25",
+                    "orderNo": "456",
+                    "customerName": "Customer 15",
+                    "date": "15/07/2023",
+                    "by": "emma",
+                    "deleteStatus": false
+                },
+                {
+                    "id": 16,
+                    "projectNo": "46",
+                    "orderNo": "789",
+                    "customerName": "Customer 16",
+                    "date": "04/08/2023",
+                    "by": "william",
+                    "deleteStatus": true
+                }
 
+                
+            ]
+          
+             };
+    
+            // Initial display of data
+            displayJobsheetData(jsonData.data);
+    
+            function displayJobsheetData(data) {
+                var tableContent = '';
+                $.each(data, function (index, item) {
+                    tableContent += '<tr>';
+                    tableContent += '<td>' + (index + 1) + '</td>';
+                    tableContent += '<td>' + item.projectNo + '</td>';
+                    tableContent += '<td>' + item.orderNo + '</td>';
+                    tableContent += '<td>' + item.customerName + '</td>';
+                    tableContent += '<td>' + item.date + '</td>';
+                    tableContent += '<td>' + item.by + '</td>';
+                    tableContent += '<td><button class="action-button">Action <box-icon name="cog"></box-icon></button></td>';
+                    tableContent += '</tr>';
+                });
+                // Update the table body with new content
+                tableBody.html(tableContent);
+            }
+    
+            function showRows(page) {
+                var start = (page - 1) * rowsPerPage;
+                var end = start + rowsPerPage;
+    
+                tableBody.find('tr').hide().slice(start, end).show();
+            }
+    
+            function updatePagination() {
+                var totalPages = Math.ceil(jsonData.data.length / rowsPerPage);
+                var pagination = $('.pagination');
+                pagination.empty();
+    
+                for (var i = 1; i <= totalPages; i++) {
+                    var li = $('<li><a href="#">' + i + '</a></li>');
+                    pagination.append(li);
+                }
+    
+                pagination.find('li').eq(currentPage - 1).addClass('active');
+            }
+    
+            function updatePaginationText() {
+                var paginationText = 'Showing ' + ((currentPage - 1) * rowsPerPage + 1) + ' to ' +
+                    Math.min(currentPage * rowsPerPage, jsonData.data.length) + ' of ' + jsonData.data.length + ' entries';
+                $('.pagination-text').text(paginationText);
+            }
+    
+            function updateButtons() {
+                $('.pagination-btn[data-action="prev"]').prop('disabled', currentPage === 1);
+                $('.pagination-btn[data-action="next"]').prop('disabled', currentPage === Math.ceil(jsonData.data.length / rowsPerPage));
+            }
+    
+            // Initial setup
+            showRows(currentPage);
+            updatePagination();
+            updatePaginationText();
+            updateButtons();
+    
+            // Pagination click event
+            $('.pagination').on('click', 'a', function (event) {
+                event.preventDefault();
+                currentPage = parseInt($(this).text());
+                showRows(currentPage);
+                updatePagination();
+                updatePaginationText();
+                updateButtons();
+            });
+    
+            // Previous and Next button click events
+            $('.pagination-btn').on('click', function () {
+                var action = $(this).data('action');
+                if (action === 'prev' && currentPage > 1) {
+                    currentPage--;
+                } else if (action === 'next' && currentPage < Math.ceil(jsonData.data.length / rowsPerPage)) {
+                    currentPage++;
+                }
+    
+                showRows(currentPage);
+                updatePagination();
+                updatePaginationText();
+                updateButtons();
+            });
+    
+            // Capture input in the search box
+            $("#search").on("input", function () {
+                var searchTerm = $(this).val().toLowerCase();
+                var filteredData = jsonData.data.filter(function (item) {
+                    return Object.values(item).some(function (value) {
+                        // Convert value to string before calling toLowerCase
+                        return String(value).toLowerCase().includes(searchTerm);
+                    });
+                });
+                // Update the displayed data
+                displayJobsheetData(filteredData);
+                updatePagination();
+                updatePaginationText();
+                updateButtons();
+            });
+        });
+    </script>
+    
+    
     <!-- CDN of Boxicon -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
