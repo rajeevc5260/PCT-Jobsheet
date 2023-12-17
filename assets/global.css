@@ -114,6 +114,9 @@ input{
 .custom-table tr{
     padding: 10px;
 }
+.bg-green{
+    background-color: #00BF95;
+}
 
 
 /* Desktop from 1280px and below */
