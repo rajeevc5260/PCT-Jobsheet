@@ -1,0 +1,54 @@
+.jobsheetEdit {
+}
+.basicDetails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 135px;
+  padding: 40px 0 16px;
+}
+.basicDetailsSection {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 25%;
+  gap: 7px;
+}
+.jobsheetTitle {
+  padding: 16px 0;
+}
+.jobsheetSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  align-items: center;
+}
+.jobsheetSection a {
+  width: 85px;
+  height: 48px;
+  align-self: flex-end;
+}
+.jobsheetDetails {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 25%;
+  gap: 7px;
+}
+.importSheet {
+  flex-direction: row;
+  align-items: center;
+}
+.importSheetSection {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.importSheetSection input[type="file"]::file-selector-button {
+  border: none;
+  border-radius: 6px;
+  padding: 2px 16px;
+  background-color: #D2CBCB;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px; /* 137.5% */
+  letter-spacing: -0.32px;
+}
