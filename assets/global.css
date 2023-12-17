@@ -1,0 +1,125 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.94);
+    background-color: #EEF1F4;
+    padding: 0px 56px;
+    display: flex;
+    justify-content: center;
+}
+a{
+    text-decoration: none;
+}
+button{
+    border: none;
+}
+input{
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.70);
+    border-radius: 6px;
+    height: 48px;
+    font-size: 16px;
+}
+.container{
+    width: 100%;
+    background-color: #FFF;
+    padding: 16px;
+}
+
+.title{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 19px;
+}
+
+.text-base{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.button-green{
+    display: flex;
+    padding: 13px 24px;
+    border-radius: 6px;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    background-color: #00BF95;
+    font-weight: 600;
+}
+
+.button-icon-green{
+    display: flex;
+    padding: 12px;
+    border-radius: 6px;
+    color: #ffffff;
+    font-weight: 600;
+    background-color: #00BF95;
+}
+
+.button-back{
+    color: #2FA0D0;
+    font-size: 18px;
+    font-weight: 600;
+}
+.progress-pill{
+    padding: 8px 16px;
+    font-size: 14px !important;
+    font-weight: 600;
+    color: #ffffff;
+}
+.publish-pill{
+    padding: 6.5px 16px;
+    font-size: 14px !important;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.action-button{
+    display: flex;
+    height: 35px;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    background-color: #EEF1F4;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: rgba(0, 0, 0, 0.94);
+    font-weight: 400;
+}
+
+.custom-table  table, th, td {
+    border-bottom: 1px solid #D2CBCB;
+}
+
+.custom-table th, td {
+    padding: 16px;
+    text-align: left;
+}
+.custom-table tr{
+    padding: 10px;
+}
+
+
+/* Desktop from 1280px and below */
+@media(max-width:1280px){
+    body{
+        padding: 0px 0px !important;
+    }
+}
+
